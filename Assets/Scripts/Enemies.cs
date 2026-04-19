@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,7 +24,7 @@ public class Enemies : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("Attack", attackRate, attackRate);
+        InvokeRepeating(nameof(Attack), attackRate, attackRate);
     }
     private void Update()
     {
@@ -88,7 +89,7 @@ public class Enemies : MonoBehaviour
         if (killedAmount == totalAmount)
         {
             killedAmount = 0;
-            Respawn();
+            Invoke(nameof(Respawn), 2f);
         }
     }
     private void Respawn()

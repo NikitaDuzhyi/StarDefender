@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     public event System.Action Killed;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.name == "projectile_ally(Clone)")
+        if(collision.CompareTag("projectile_ally"))
         {
             Destroy(gameObject);
             ScoreChanger.Instance.AddScore(10);
@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameManager.Instance.GameOver();
         }
     }
 }

@@ -64,14 +64,11 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "projectile_hostile(Clone)" || collision.gameObject.name == "enemy(Clone)")
+        if (collision.CompareTag("projectile_hostile") || collision.CompareTag("enemy"))
         {
             Destroy(gameObject);
-            RestartScene();
+            GameManager.Instance.GameOver();
         }
     }
-    private void RestartScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+
 }
